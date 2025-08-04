@@ -28,6 +28,10 @@ namespace TodoAPI.Controllers
                     return Unauthorized(new { message = "Invalid token" });
 
                 var todos = await _todoService.GetUserTodosAsync(userId.Value);
+
+                if (todos == null || !todos.Any())
+                    return NotFound(new { message = "No todos found" });
+                    
                 return Ok(new { message = "Todos retrieved successfully", data = todos });
             }
             catch (Exception ex)
@@ -65,17 +69,17 @@ namespace TodoAPI.Controllers
                 var userId = GetCurrentUserId();
                 if (userId == null)
                     return Unauthorized(new { message = "Invalid token" });
-        Console.WriteLine($"Creating todo for userId: {userId}, title: {createTodoDto.Title}");
+                Console.WriteLine($"Creating todo for userId: {userId}, title: {createTodoDto.Title}");
 
                 var todo = await _todoService.CreateTodoAsync(createTodoDto, userId.Value);
-        Console.WriteLine($"Todo created with ID: {todo.Id}");
+                Console.WriteLine($"Todo created with ID: {todo.Id}");
 
-                return CreatedAtAction(nameof(GetTodoById), new { id = todo.Id }, 
+                return CreatedAtAction(nameof(GetTodoById), new { id = todo.Id },
                     new { message = "Todo created successfully", data = todo });
             }
             catch (Exception ex)
             {
-                        Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
 
                 return StatusCode(500, new { message = "Internal server error", error = ex.Message });
             }
