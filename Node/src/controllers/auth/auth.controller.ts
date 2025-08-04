@@ -13,6 +13,16 @@ export class AuthController {
   static async createUser(req: Request, res: Response) {
     const { fullName, email, password } = req.body;
 
+    if (!fullName || !email || !password) {
+      return res.status(MESSAGES.BAD_REQUEST._CODE).json({
+        error: new ApiError(
+          MESSAGES.BAD_REQUEST._CODE,
+          null,
+          "Full name, email, and password are required."
+        ),
+      });
+    }
+
     try {
       const normalizedEmail = ValidationHelper.isValidEmail(email);
       console.log("email", normalizedEmail);

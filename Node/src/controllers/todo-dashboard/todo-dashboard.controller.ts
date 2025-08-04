@@ -26,6 +26,16 @@ export class TodoDashboardController {
         order: { createdAt: "DESC" },
       });
 
+      if (!todos.length) {
+        return res.status(MESSAGES.NOT_FOUND._CODE).json({
+          error: new ApiError(
+            MESSAGES.NOT_FOUND._CODE,
+            null,
+            "No todos found for this user"
+          ),
+        });
+      }
+
       return res.status(MESSAGES.SUCCESS._CODE).json(
         new ApiResponse(
           MESSAGES.SUCCESS._CODE,
@@ -43,6 +53,7 @@ export class TodoDashboardController {
       });
     }
   }
+
   static async createTodo(req: Request, res: Response) {
     try {
       const { userId } = (req as any).user;
