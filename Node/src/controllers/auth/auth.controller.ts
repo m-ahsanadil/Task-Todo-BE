@@ -11,9 +11,9 @@ import ApiResponse from "../../utils/api-response";
 
 export class AuthController {
   static async createUser(req: Request, res: Response) {
-    const { fullName, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!fullName || !email || !password) {
+    if (!name || !email || !password) {
       return res.status(MESSAGES.BAD_REQUEST._CODE).json({
         error: new ApiError(
           MESSAGES.BAD_REQUEST._CODE,
@@ -53,16 +53,6 @@ export class AuthController {
       });
 
       if (existingUser) {
-        // if (!existingUser.isEmailVerified) {
-        //   return res.status(MESSAGES.UNVERIFIED_ACCOUNT._CODE).json({
-        //     error: new ApiError(
-        //       MESSAGES.UNVERIFIED_ACCOUNT._CODE,
-        //       null,
-        //       "Account exists but is not verified. Please verify your account."
-        //     ),
-        //   });
-        // }
-
         return res.status(MESSAGES.CONFLICT._CODE).json({
           error: new ApiError(
             MESSAGES.CONFLICT._CODE,
@@ -73,7 +63,7 @@ export class AuthController {
       }
 
       const user = new User();
-      user.name = fullName;
+      user.name = name;
       user.email = normalizedEmail;
       user.password = encryptedPassword;
 
