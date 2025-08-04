@@ -25,7 +25,7 @@ To run these APIs, you will need the following installed on your machine:
 
 * **MySQL Server** (local or remote)
 * **.NET 8 SDK** (for the ASP.NET Core API)
-* **Node.js** (v18+) (for the Node.js API)
+* **Node.js** (v18.17.0 LTS or v20.x LTS) (for the Node.js API)
 * **Postman** or any API testing tool (optional but recommended)
 
 ---
