@@ -5,8 +5,6 @@ This repository contains two backend APIs for a Todo application, built with dif
 * **ASP.NET Core API** (C# / EF Core / MySQL)
 * **Node.js API** (Express / TypeScript / MySQL)
 
-This project is a great example for developers looking to compare and contrast backend development using these popular frameworks.
-
 ---
 
 ## Features
@@ -17,7 +15,7 @@ This project is a great example for developers looking to compare and contrast b
 * **Secure Endpoints:** All todo-related endpoints are protected with authorization checks.
 * **Database Management:**
     * The **ASP.NET** version uses **EF Core migrations** for database management.
-    * The **Node.js** version uses **TypeORM** or **Sequelize** for its Object-Relational Mapping (ORM).
+    * The **Node.js** version uses **TypeORM** for its Object-Relational Mapping (ORM).
 
 ---
 
@@ -38,38 +36,40 @@ To run these APIs, you will need the following installed on your machine:
 
 1.  Clone this repository:
     ```bash
-    git clone [https://github.com/yourusername/todo-app.git](https://github.com/yourusername/todo-app.git)
+    git clone https://github.com/m-ahsanadil/todo-app.git
     cd todo-app/ASP
     ```
 
-2.  Configure your **MySQL connection string** in `appsettings.json`:
+2.  Before proceeding, make sure you have a MySQL server running or use my database named **`todo_asp`** to test.
+
+3.  Configure your **MySQL connection string** in `appsettings.json`:
     ```json
     "ConnectionStrings": {
       "DefaultConnection": "server=localhost;port=3306;database=todo_asp;user=root;password=yourpassword;"
     }
     ```
 
-3.  Install **EF Core tools** if you haven't already:
+4.  Install **EF Core tools** if you haven't already:
     ```bash
     dotnet tool install --global dotnet-ef
     ```
 
-4.  Apply the database migrations:
+5.  Apply the database migrations to create the necessary tables in your `todo_asp` database:
     ```bash
     dotnet ef database update
     ```
 
-5.  Run the application:
+6.  Run the application:
     ```bash
     dotnet run
     ```
-    The API will be available at `https://localhost:5001` or `http://localhost:5000`.
+    The API will be available at `https://localhost:3001`.
 
 ### Node.js API Setup
 
 1.  Navigate to the Node.js folder:
     ```bash
-    cd ../NodeAPI
+    cd ../Node
     ```
 
 2.  Install the project dependencies:
@@ -77,22 +77,21 @@ To run these APIs, you will need the following installed on your machine:
     npm install
     ```
 
-3.  Create a `.env` file in the root of the `NodeAPI` directory and add your MySQL connection details and a JWT secret:
+3.  Ensure you have a MySQL database or use my database named **`todo_node`** to test.
+
+4.  Create a `.env` file in the root of the `Node` directory and add your MySQL connection details and a JWT secret:
     ```ini
     DB_HOST=localhost
-    DB_PORT=3306
+    DB_PORT=3000
     DB_USER=root
     DB_PASSWORD=yourpassword
     DB_NAME=todo_node
     JWT_SECRET=your_jwt_secret
     ```
 
-4.  Run database migrations (using TypeORM or Sequelize CLI):
-    ```bash
-    npm run migrate
-    ```
+5.  Run the backend server. The database schema (tables) will be created automatically. This is handled by TypeORM using the `synchronize: true` option in `ormconfig.ts`.
 
-5.  Start the development server:
+6.  Start the development server:
     ```bash
     npm run dev
     ```
@@ -106,13 +105,12 @@ The following endpoints are available in both APIs.
 
 | Method | Endpoint | Description | Auth Required |
 | :--- | :--- | :--- | :--- |
-| **POST** | `/api/auth/register` | Register a new user | No |
-| **POST** | `/api/auth/login` | Log in and get a JWT token | No |
-| **GET** | `/api/todos` | Get a list of todos for the authenticated user | Yes |
-| **POST** | `/api/todos` | Create a new todo | Yes |
-| **GET** | `/api/todos/{id}` | Get a specific todo by its ID | Yes |
-| **PUT** | `/api/todos/{id}` | Update a specific todo by its ID | Yes |
-| **DELETE** | `/api/todos/{id}` | Delete a specific todo by its ID | Yes |
+| **POST** | `/api/v1/register` | Register a new user | No |
+| **POST** | `/api/v1/login` | Log in and get a JWT token | No |
+| **GET** | `/api/v1/todos` | Get a list of todos for the authenticated user | Yes |
+| **POST** | `/api/v1/todos` | Create a new todo | Yes |
+| **PUT** | `/api/v1/todos/{id}` | Update a specific todo by its ID | Yes |
+| **DELETE** | `/api/v1/todos/{id}` | Delete a specific todo by its ID | Yes |
 
 ### Notes
 * All `/todos` endpoints require a JWT token in the `Authorization` header. The header should be formatted as follows: `Authorization: Bearer <token>`.
@@ -122,4 +120,4 @@ The following endpoints are available in both APIs.
 
 ## License
 
-This project is licensed under the **MIT License**.
+This project is Task base project by company.
