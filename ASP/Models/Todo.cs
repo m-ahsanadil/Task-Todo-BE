@@ -21,6 +21,7 @@ namespace TodoAPI.Models
 
         public bool IsCompleted { get; set; } = false;
 
+        [Column(TypeName = "datetime")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation property

@@ -7,7 +7,7 @@ using TodoAPI.Services;
 namespace TodoAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/todos")]
     [Authorize]
     public class TodosController : ControllerBase
     {
