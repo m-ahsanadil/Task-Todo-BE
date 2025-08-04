@@ -1,0 +1,9 @@
+node_modules/
+uploads/
+dist/
+*.log
+*.error
+.env
+keys
+testings
+.github/
