@@ -82,7 +82,6 @@ namespace TodoAPI.Services
 
             if (todo == null) return null;
 
-            // Update only provided fields
             if (!string.IsNullOrEmpty(updateTodoDto.Title))
                 todo.Title = updateTodoDto.Title;
 

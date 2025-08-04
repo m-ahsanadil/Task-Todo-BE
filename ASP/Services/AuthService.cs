@@ -30,7 +30,6 @@ namespace TodoAPI.Services
 
         public async Task<AuthResponseDto?> RegisterAsync(RegisterDto registerDto)
         {
-            // Check if user already exists
             if (await _context.Users.AnyAsync(u => u.Email == registerDto.Email))
             {
                 return null; // User already exists
@@ -39,7 +38,6 @@ namespace TodoAPI.Services
             // Hash password
             var passwordHash = HashPassword(registerDto.Password);
 
-            // Create user
             var user = new User
             {
                 Name = registerDto.Name,
@@ -50,7 +48,6 @@ namespace TodoAPI.Services
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            // Generate JWT token
             var token = GenerateJwtToken(user);
 
             return new AuthResponseDto
@@ -67,14 +64,12 @@ namespace TodoAPI.Services
 
         public async Task<AuthResponseDto?> LoginAsync(LoginDto loginDto)
         {
-            // Find user by email
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == loginDto.Email);
             if (user == null || !VerifyPassword(loginDto.Password, user.PasswordHash))
             {
-                return null; // Invalid credentials
+                return null;
             }
 
-            // Generate JWT token
             var token = GenerateJwtToken(user);
 
             return new AuthResponseDto

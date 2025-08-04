@@ -24,7 +24,6 @@ namespace TodoAPI.Models
         [Column(TypeName = "datetime")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // Navigation property
         public virtual User User { get; set; } = null!;
     }
 }
