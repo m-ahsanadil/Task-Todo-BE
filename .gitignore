@@ -215,6 +215,7 @@ ASP/secrets.json
 ASP/*.db
 ASP/*.sqlite
 ASP/*.sqlite3
+ASP/appsettings.json
 
 # macOS (for both folders if on Mac)
 ASP/.DS_Store
