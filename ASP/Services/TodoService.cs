@@ -43,6 +43,19 @@ namespace TodoAPI.Services
 
         public async Task<TodoResponseDto> CreateTodoAsync(CreateTodoDto createTodoDto, int userId)
         {
+
+            var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
+            if (!userExists)
+            {
+                throw new ArgumentException("User does not exist.");
+            }
+
+            var exists = await _context.Todos.AnyAsync(t => t.UserId == userId && t.Title == createTodoDto.Title);
+            if (exists)
+            {
+                throw new InvalidOperationException("Todo with this title already exists.");
+            }
+
             var todo = new Todo
             {
                 Title = createTodoDto.Title,
@@ -60,6 +73,10 @@ namespace TodoAPI.Services
 
         public async Task<TodoResponseDto?> UpdateTodoAsync(int todoId, UpdateTodoDto updateTodoDto, int userId)
         {
+
+            if (todoId <= 0)
+                throw new ArgumentException("Invalid Todo ID"); ;
+
             var todo = await _context.Todos
                 .FirstOrDefaultAsync(t => t.Id == todoId && t.UserId == userId);
 
@@ -81,6 +98,9 @@ namespace TodoAPI.Services
 
         public async Task<bool> DeleteTodoAsync(int todoId, int userId)
         {
+            if (todoId <= 0)
+                throw new ArgumentException("Invalid Todo ID");
+
             var todo = await _context.Todos
                 .FirstOrDefaultAsync(t => t.Id == todoId && t.UserId == userId);
 

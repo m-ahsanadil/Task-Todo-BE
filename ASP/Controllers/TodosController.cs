@@ -65,13 +65,18 @@ namespace TodoAPI.Controllers
                 var userId = GetCurrentUserId();
                 if (userId == null)
                     return Unauthorized(new { message = "Invalid token" });
+        Console.WriteLine($"Creating todo for userId: {userId}, title: {createTodoDto.Title}");
 
                 var todo = await _todoService.CreateTodoAsync(createTodoDto, userId.Value);
+        Console.WriteLine($"Todo created with ID: {todo.Id}");
+
                 return CreatedAtAction(nameof(GetTodoById), new { id = todo.Id }, 
                     new { message = "Todo created successfully", data = todo });
             }
             catch (Exception ex)
             {
+                        Console.WriteLine($"Error: {ex.Message}");
+
                 return StatusCode(500, new { message = "Internal server error", error = ex.Message });
             }
         }
@@ -88,6 +93,9 @@ namespace TodoAPI.Controllers
                 var todo = await _todoService.UpdateTodoAsync(id, updateTodoDto, userId.Value);
                 if (todo == null)
                     return NotFound(new { message = "Todo not found" });
+
+                if (todo == null)
+                    return NotFound(new { message = $"Todo with ID {id} not found" });
 
                 return Ok(new { message = "Todo updated successfully", data = todo });
             }
