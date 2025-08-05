@@ -138,7 +138,7 @@ Below are the screenshots demonstrating the API functionality using Postman:
 ![Get All Todos](screenshots/todo-get.png)
 
 #### Create New Todo
-![Create Todo](screenshots/todo-completed.png)
+![Create Todo](screenshots/todo-create.png)
 
 #### Update Todo
 ![Update Todo](screenshots/todo-update.png)
@@ -148,6 +148,9 @@ Below are the screenshots demonstrating the API functionality using Postman:
 
 #### Todo Not Found (Error Handling)
 ![Todo Not Found](screenshots/todo-notfound.png)
+
+#### Todo UnAuthorized (Error Handling)
+![Todo UnAuthorized](screenshots/unauthorized.png)
 
 ---
 
