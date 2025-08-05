@@ -63,7 +63,6 @@ export const authentication = async (
 
     const { id } = decoded;
     const user = await getUser(id);
-    console.log("user: ", user);
 
     if (!user) {
       return res.status(MESSAGES.UNAUTHORIZED._CODE).json({

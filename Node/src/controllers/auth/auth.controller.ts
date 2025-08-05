@@ -24,7 +24,6 @@ export class AuthController {
 
     try {
       const normalizedEmail = ValidationHelper.isValidEmail(email);
-      console.log("email", normalizedEmail);
 
       if (!ValidationHelper.isValidPassword(password)) {
         return res.status(MESSAGES.BAD_REQUEST._CODE).json({
@@ -104,7 +103,6 @@ export class AuthController {
       req.body;
     try {
       const normalizedEmail = ValidationHelper.isValidEmail(email);
-      console.log(normalizedEmail);
       const userRepository = getRepository(User);
 
 
