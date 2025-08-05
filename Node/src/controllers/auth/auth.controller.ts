@@ -8,7 +8,6 @@ import { User } from "../../models/user.models";
 import { UserResponse } from "../../dto/user.dto";
 import ApiResponse from "../../utils/api-response";
 
-
 export class AuthController {
   static async createUser(req: Request, res: Response) {
     const { name, email, password } = req.body;

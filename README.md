@@ -63,7 +63,7 @@ To run these APIs, you will need the following installed on your machine:
     ```bash
     dotnet run
     ```
-    The API will be available at `https://localhost:3001`.
+    The API will be available at `https://localhost:5000`.
 
 ### Node.js API Setup
 
