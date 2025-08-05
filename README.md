@@ -82,12 +82,14 @@ To run these APIs, you will need the following installed on your machine:
 4.  Create a `.env` file in the root of the `Node` directory and add your MySQL connection details and a JWT secret:
     ```ini
     DB_HOST=localhost
-    DB_PORT=3000
+    DB_PORT=8000
     DB_USER=root
     DB_PASSWORD=yourpassword
     DB_NAME=todo_node
     JWT_SECRET=your_jwt_secret
     ```
+    **Note:** If the `.env` file is not configured with port, the server will automatically run on port `8001` instead of the configured port.
+
 
 5.  Run the backend server. The database schema (tables) will be created automatically. This is handled by TypeORM using the `synchronize: true` option in `ormconfig.ts`.
 
