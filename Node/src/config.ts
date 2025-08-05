@@ -16,7 +16,7 @@ const config = convict({
           ? 443
           : process.env.PORT === "8000"
             ? 8000
-            : 3000,
+            : 8001,
       env: "PORT",
     },
   },
