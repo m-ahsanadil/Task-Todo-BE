@@ -97,7 +97,7 @@ To run these APIs, you will need the following installed on your machine:
     ```bash
     npm run dev
     ```
-    The API will be available at `http://localhost:3000`.
+    The API will be available at `http://localhost:8000`.
 
 ---
 
