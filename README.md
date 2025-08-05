@@ -1,4 +1,4 @@
-# Todo Application API
+# Task-Todo-BE
 
 This repository contains two backend APIs for a Todo application, built with different technology stacks:
 
@@ -36,8 +36,8 @@ To run these APIs, you will need the following installed on your machine:
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/m-ahsanadil/todo-app.git
-    cd todo-app/ASP
+    git clone https://github.com/m-ahsanadil/Task-Todo-BE.git
+    cd Task-Todo-BE/ASP
     ```
 
 2.  Before proceeding, make sure you have a MySQL server running or use my database named **`todo_asp`** to test.
@@ -120,4 +120,4 @@ The following endpoints are available in both APIs.
 
 ## License
 
-This project is Task base project by company.
+This project was developed as part of a company-assigned task.
