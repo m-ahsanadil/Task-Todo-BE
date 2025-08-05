@@ -34,7 +34,7 @@ const config = convict({
       },
       name: {
         format: "*",
-        default: "defaultdb",
+        default: "todo_node",
         env: "LOCAL_DB_NAME",
       },
       username: {
