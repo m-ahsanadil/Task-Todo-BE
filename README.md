@@ -127,7 +127,7 @@ Below are the screenshots demonstrating the API functionality using Postman:
 ### User Authentication
 
 #### User Registration
-![User Registration](screenshots/register.png)
+![User Registration]([screenshots/register.png](https://github.com/m-ahsanadil/Task-Todo-BE/blob/main/screenshots/register.png))
 
 #### User Login
 ![User Login](screenshots/login.png)
