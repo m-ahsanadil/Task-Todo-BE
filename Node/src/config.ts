@@ -14,8 +14,8 @@ const config = convict({
       default:
         process.env.NODE_ENV === "production"
           ? 443
-          : process.env.PORT === "5001"
-            ? 5001
+          : process.env.PORT === "8000"
+            ? 8000
             : 3000,
       env: "PORT",
     },
