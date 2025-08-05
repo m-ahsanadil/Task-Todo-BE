@@ -1,4 +1,4 @@
-# Todo Application API
+# Task-Todo-BE
 
 This repository contains two backend APIs for a Todo application, built with different technology stacks:
 
